@@ -1,4 +1,4 @@
-#include "string.h"
+#include "mstring.h"
 #include <stdio.h>
 
 inline void memcpy(uint8_t *dest, const uint8_t *src, uint32_t len)
@@ -22,7 +22,26 @@ inline void bzero(void *dest, uint32_t len)
     memset(dest, 0, len);
 }
 
-char *strcpy(char * dest, const char *src)
+inline int strcmp(const char *dest, const char *src)
+{
+        int ret = 0 ;
+
+        while(!(ret = *(unsigned char *)src - *(unsigned char *)dest) && *dest) {
+                ++src;
+                ++dest;
+        }
+
+        if (ret < 0) {
+                ret = -1;
+        }
+        else if (ret > 0) {
+                ret = 1;
+        }
+
+        return ret;
+}
+
+inline char *strcpy(char * dest, const char *src)
 {
     char *tmp = dest;
 
@@ -31,7 +50,7 @@ char *strcpy(char * dest, const char *src)
     return tmp;
 }
 
-char * strcat(char * dest, const char * src)
+inline char * strcat(char * dest, const char * src)
 {
     char *tmp = dest;
 
@@ -43,9 +62,8 @@ char * strcat(char * dest, const char * src)
     return tmp;
 }
 
-int strlen(const char * s)
+inline int strlen(const char * s)
 {
-    printf("in strlen@@");
     const char *sc;
 
     for (sc = s; *sc != '\0'; ++sc)

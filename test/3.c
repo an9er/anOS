@@ -55,16 +55,14 @@ char *strcpy(char * dest, const char *src)
     return tmp;
 }
 
-char * mstrcat(char * dest, const char * src)
+char * strcat(char * dest, const char * src)
 {
-    printf("in strcat@@");
     char *tmp = dest;
 
     while (*dest)
         dest++;
-    while ((*dest++ = *src++) != '\0')
-        ;
-
+     while ((*dest++ = *src++) != '\0')
+         ;
     return tmp;
 }
 
@@ -83,5 +81,8 @@ int main()
     char *a = "this is a";
     char *b = " and this is b";
     printf("lena:%d\n", mstrlen(a));
-    printf("new string:%s\n", mstrcat(a, b));
+    char c[30];
+    strcpy(c, "memcpy ");
+    strcat(c, "and??");
+    printf("new string:%s\n", c);
 }
