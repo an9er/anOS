@@ -1,5 +1,4 @@
 #include "mstring.h"
-#include <stdio.h>
 
 inline void memcpy(uint8_t *dest, const uint8_t *src, uint32_t len)
 {
